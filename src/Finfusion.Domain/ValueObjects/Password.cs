@@ -19,7 +19,10 @@ public sealed class Password : ValueObject
   /// Initializes a new instance of the <see cref="Password"/> class.
   /// </summary>
   /// <param name="value">The password value.</param>
-  private Password(string value) => Value = value;
+  private Password(string value)
+  {
+    Value = value;
+  }
 
   /// <summary>
   /// Gets the password value.

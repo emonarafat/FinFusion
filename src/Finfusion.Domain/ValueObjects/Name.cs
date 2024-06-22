@@ -18,7 +18,10 @@ public class Name : ValueObject
   /// Initializes a new instance of the <see cref="Name"/> class.
   /// </summary>
   /// <param name="value">The name value.</param>
-  private Name(string value) => Value = value;
+  private Name(string value)
+  {
+    Value = value;
+  }
 
   /// <summary>
   /// Gets the name value.

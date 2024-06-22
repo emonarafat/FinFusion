@@ -27,7 +27,10 @@ public sealed partial class Email : ValueObject
   /// Initializes a new instance of the <see cref="Email"/> class.
   /// </summary>
   /// <param name="value">The email value.</param>
-  private Email(string value) => Value = value;
+  private Email(string value)
+  {
+    Value = value;
+  }
 
   /// <summary>
   /// Gets the email value.

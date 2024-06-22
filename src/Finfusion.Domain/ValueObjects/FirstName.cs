@@ -18,14 +18,19 @@ public sealed class FirstName : ValueObject
   /// Initializes a new instance of the <see cref="FirstName"/> class.
   /// </summary>
   /// <param name="value">The first name value.</param>
-  private FirstName(string value) => Value = value;
+  private FirstName(string value)
+  {
+    Value = value;
+  }
 
   /// <summary>
   /// Gets the first name value.
   /// </summary>
   public string Value { get; }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
   public static implicit operator string(FirstName firstName) => firstName.Value;
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
   /// <summary>
   /// Creates a new <see cref="FirstName"/> instance based on the specified value.

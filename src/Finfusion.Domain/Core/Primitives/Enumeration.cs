@@ -9,7 +9,7 @@ namespace Finfusion.Domain.Core.Primitives;
 /// <summary>
 /// Represents an enumeration type.
 /// </summary>
-/// <typeparam name="TEnum">The type of the enumeration.</typeparam>
+/// <typeparam name="TEnum"/>
 public abstract class Enumeration<TEnum> : IEquatable<Enumeration<TEnum>>, IComparable<Enumeration<TEnum>>
   where TEnum : Enumeration<TEnum>
 {

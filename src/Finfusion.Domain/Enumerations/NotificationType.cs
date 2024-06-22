@@ -1,5 +1,6 @@
 ﻿using Finfusion.Domain.Core.Primitives;
 using Finfusion.Domain.Core.Primitives.Maybe;
+using Finfusion.Domain.Entities;
 
 namespace Finfusion.Domain.Enumerations;
 
@@ -40,7 +41,7 @@ public abstract class NotificationType : Enumeration<NotificationType>
   /// <param name="userId">The user identifier.</param>
   /// <param name="utcNow">The current date and time.</param>
   /// <returns>The maybe instance that may contain the notification.</returns>
-  public abstract Maybe<Notification> TryCreateNotification(Event @event, Guid userId, DateTime utcNow);
+  public abstract Maybe<Notification> TryCreateNotification(Event @event, Ulid userId, DateTime utcNow);
 
   /// <summary>
   /// Creates the notification email for the specified event and user.
@@ -64,7 +65,7 @@ public abstract class NotificationType : Enumeration<NotificationType>
     }
 
     /// <inheritdoc />
-    public override Maybe<Notification> TryCreateNotification(Event @event, Guid userId, DateTime utcNow)
+    public override Maybe<Notification> TryCreateNotification(Event @event, Ulid userId, DateTime utcNow)
     {
       const int allowedDifferenceInDays = 1;
 
@@ -99,7 +100,7 @@ public abstract class NotificationType : Enumeration<NotificationType>
     }
 
     /// <inheritdoc />
-    public override Maybe<Notification> TryCreateNotification(Event @event, Guid userId, DateTime utcNow)
+    public override Maybe<Notification> TryCreateNotification(Event @event, Ulid userId, DateTime utcNow)
     {
       const int allowedDifferenceInHours = 1;
 
@@ -134,7 +135,7 @@ public abstract class NotificationType : Enumeration<NotificationType>
     }
 
     /// <inheritdoc />
-    public override Maybe<Notification> TryCreateNotification(Event @event, Guid userId, DateTime utcNow)
+    public override Maybe<Notification> TryCreateNotification(Event @event, Ulid userId, DateTime utcNow)
     {
       const int allowedDifferenceInMinutes = 15;
 

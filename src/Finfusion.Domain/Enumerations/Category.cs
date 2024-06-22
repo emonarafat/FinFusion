@@ -7,8 +7,12 @@ namespace Finfusion.Domain.Enumerations;
 /// </summary>
 public sealed class Category : Enumeration<Category>
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
   public static readonly Category None = new(0, "None");
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
   public static readonly Category Concert = new(1, "Concert");
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
   /// <summary>
   /// Initializes a new instance of the <see cref="Category"/> class.

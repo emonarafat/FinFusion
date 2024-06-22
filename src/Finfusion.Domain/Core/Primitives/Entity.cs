@@ -10,18 +10,6 @@ public abstract class Entity : IEquatable<Entity>
   /// <summary>
   /// Initializes a new instance of the <see cref="Entity"/> class.
   /// </summary>
-  /// <param name="id">The entity identifier.</param>
-  protected Entity(Guid id)
-      : this()
-  {
-    Ensure.NotEmpty(id, "The identifier is required.", nameof(id));
-
-    Id = id;
-  }
-
-  /// <summary>
-  /// Initializes a new instance of the <see cref="Entity"/> class.
-  /// </summary>
   /// <remarks>
   /// Required by EF Core.
   /// </remarks>
@@ -30,12 +18,22 @@ public abstract class Entity : IEquatable<Entity>
   }
 
   /// <summary>
-  /// Gets or sets the entity identifier.
+  /// Initializes a new instance of the <see cref="Entity"/> class.
   /// </summary>
-  public Guid Id { get; private set; }
+  /// <param name="id">The entity identifier.</param>
+  protected Entity(Ulid id) : this()
+  {
+    Ensure.NotEmpty(id, "The identifier is required.", nameof(id));
+
+    Id = id;
+  }
+
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+  public static bool operator !=(Entity a, Entity b) => !(a == b);
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
   /// <summary>
-  /// 
+  ///
   /// </summary>
   /// <param name="a"></param>
   /// <param name="b"></param>
@@ -56,14 +54,6 @@ public abstract class Entity : IEquatable<Entity>
   }
 
   /// <summary>
-  /// 
-  /// </summary>
-  /// <param name="a"></param>
-  /// <param name="b"></param>
-  /// <returns></returns>
-  public static bool operator !=(Entity a, Entity b) => !(a == b);
-
-  /// <summary>
   /// TODO: Add Summary.
   /// </summary>
   /// <param name="other">The other.</param>
@@ -79,36 +69,26 @@ public abstract class Entity : IEquatable<Entity>
   }
 
   /// <summary>
-  /// TODO: Add Summary.
+  /// .
   /// </summary>
   /// <param name="obj">The obj.</param>
   /// <returns>A <see cref="bool"/></returns>
   public override bool Equals(object? obj)
   {
     if (obj is null)
-    {
       return false;
-    }
 
     if (ReferenceEquals(this, obj))
-    {
       return true;
-    }
 
     if (obj.GetType() != GetType())
-    {
       return false;
-    }
 
     if (obj is not Entity other)
-    {
       return false;
-    }
 
-    if (Id == Guid.Empty || other.Id == Guid.Empty)
-    {
+    if (Id == Ulid.Empty || other.Id == Ulid.Empty)
       return false;
-    }
 
     return Id == other.Id;
   }
@@ -118,4 +98,9 @@ public abstract class Entity : IEquatable<Entity>
   /// </summary>
   /// <returns>An <see cref="int"/></returns>
   public override int GetHashCode() => Id.GetHashCode() * 41;
+
+  /// <summary>
+  /// Gets or sets the entity identifier.
+  /// </summary>
+  public Ulid Id { get; private set; }
 }

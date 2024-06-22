@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents the result of some operation, with status information and possibly a value and an error.
 /// </summary>
-/// <typeparam name="TValue">The result value type.</typeparam>
+/// <typeparam name="TValue"/>
 public class Result<TValue> : Result
 {
   private readonly TValue _value;
@@ -16,7 +16,9 @@ public class Result<TValue> : Result
   /// <param name="error">The error.</param>
   protected internal Result(TValue value, bool isSuccess, Error error)
       : base(isSuccess, error)
-      => _value = value;
+  {
+    _value = value;
+  }
 
   /// <summary>
   /// 

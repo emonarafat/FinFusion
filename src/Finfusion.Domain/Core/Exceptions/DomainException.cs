@@ -5,10 +5,10 @@ namespace Finfusion.Domain.Core.Exceptions;
 /// <summary>
 /// Represents an exception that occurred in the domain.
 /// </summary>
+/// <param name="error">The error.</param>
 /// <remarks>
 /// Initializes a new instance of the <see cref="DomainException"/> class.
 /// </remarks>
-/// <param name="error">The error containing the information about what happened.</param>
 public class DomainException(Error error) : Exception(error.Message)
 {
 
